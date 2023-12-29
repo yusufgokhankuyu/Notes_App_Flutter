@@ -70,13 +70,13 @@ class _KategorilerState extends State<Kategoriler> {
                     "Kategoriyi sildiğinizde tüm notları sileceğinizden emin misiniz?"),
                 ButtonBar(
                   children: [
-                    FlatButton(
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
                       child: const Text("Vazgeç"),
                     ),
-                    FlatButton(
+                    ElevatedButton(
                       onPressed: () {
                         databaseHelper
                             .kategoriSil(kategoriID)
@@ -145,17 +145,19 @@ class _KategorilerState extends State<Kategoriler> {
                   )),
               ButtonBar(
                 children: [
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    color: Colors.orangeAccent,
-                    child: const Text(
-                      'Vazgeç',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  RaisedButton(
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Vazgeç',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Colors.yellow),
+                      )),
+                  ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
@@ -166,7 +168,8 @@ class _KategorilerState extends State<Kategoriler> {
                                 guncellenecekKategoriAdi))
                             .then((katID) {
                           if (katID != 0) {
-                            Scaffold.of(myContext).showSnackBar(const SnackBar(
+                            ScaffoldMessenger.of(myContext)
+                                .showSnackBar(const SnackBar(
                               content: Text("Kategori güncellendi"),
                               duration: Duration(seconds: 1),
                             ));
@@ -176,7 +179,9 @@ class _KategorilerState extends State<Kategoriler> {
                         });
                       }
                     },
-                    color: Colors.green,
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.yellow),
+                    ),
                     child: const Text(
                       'Güncelle',
                       style: TextStyle(color: Colors.white),

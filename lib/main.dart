@@ -136,17 +136,19 @@ class _NotListesiState extends State<NotListesi> {
                   )),
               ButtonBar(
                 children: [
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    color: Colors.orangeAccent,
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Colors.orangeAccent)),
                     child: const Text(
                       'Vazgeç',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
@@ -154,8 +156,11 @@ class _NotListesiState extends State<NotListesi> {
                             .kategoriEkle(Kategori(yeniKategoriAdi))
                             .then((kategoriID) {
                           if (kategoriID > 0) {
-                            _scaffoldKey.currentState
-                                ?.showSnackBar(const SnackBar(
+                            //Değiştirildi
+                            // _scaffoldKey.currentState
+                            //     ?.showSnackBar(const SnackBar(
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
                               content: Text("Kategori eklendi"),
                               duration: Duration(seconds: 2),
                             ));
@@ -164,7 +169,8 @@ class _NotListesiState extends State<NotListesi> {
                         });
                       }
                     },
-                    color: Colors.red,
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(Colors.red)),
                     child: const Text(
                       'Kaydet',
                       style: TextStyle(color: Colors.white),
@@ -282,14 +288,14 @@ class _NotlarState extends State<Notlar> {
                             ButtonBar(
                               alignment: MainAxisAlignment.center,
                               children: [
-                                FlatButton(
+                                ElevatedButton(
                                     onPressed: () =>
                                         _notSil(tumNotlar[index].notID),
                                     child: const Text(
                                       "Sil",
                                       style: TextStyle(color: Colors.redAccent),
                                     )),
-                                FlatButton(
+                                ElevatedButton(
                                     onPressed: () {
                                       _detaySayfasinaGit(
                                           context, tumNotlar[index]);
@@ -351,7 +357,7 @@ class _NotlarState extends State<Notlar> {
   _notSil(notID) {
     databaseHelper.notSil(notID).then((silinenNotID) {
       if (silinenNotID != 0) {
-        Scaffold.of(context)
+        ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Not Silindi ")));
       }
       setState(() {});

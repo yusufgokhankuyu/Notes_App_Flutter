@@ -168,16 +168,18 @@ class _NotDetayState extends State<NotDetay> {
                           alignment: MainAxisAlignment.spaceEvenly,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
                               child: const Text(
                                 "Vazgeç",
                               ),
-                              color: Colors.redAccent,
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Colors.redAccent)),
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
@@ -215,7 +217,9 @@ class _NotDetayState extends State<NotDetay> {
                                 }
                               },
                               child: const Text("Kaydet"),
-                              color: Colors.yellow,
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStatePropertyAll(Colors.yellow)),
                             ),
                           ],
                         )
