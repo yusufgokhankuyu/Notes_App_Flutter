@@ -62,7 +62,7 @@ class _KategorilerState extends State<Kategoriler> {
         barrierDismissible: false,
         builder: (context) {
           return AlertDialog(
-            title: const Text("Kategori SİL"),
+            title: const Text("Kategori Sil"),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
