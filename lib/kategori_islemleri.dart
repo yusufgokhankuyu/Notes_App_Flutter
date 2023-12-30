@@ -30,7 +30,7 @@ class _KategorilerState extends State<Kategoriler> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Kategoriler"),
+        title: const Text("Kategori Seç"),
       ),
       body: ListView.builder(
         itemCount: tumKategoriler!.length,
