@@ -358,7 +358,7 @@ class _NotlarState extends State<Notlar> {
     databaseHelper.notSil(notID).then((silinenNotID) {
       if (silinenNotID != 0) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Not Silindi ")));
+            .showSnackBar(SnackBar(content: Text("Not Silindi")));
       }
       setState(() {});
     });
